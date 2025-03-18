@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <title>USDT Pay</title>
+    <meta name="keywords" content="USDT支付,虚拟币支付,手游支付,游戏支付,游戏支付平台,外汇支付,游戏支付充值平台,匿名支付,第三方支付,第三方游戏支付,第三方支付平台">
+    </meta>
+    <meta name="description"
+        content="UPay是专业的USDT支付平台，长期致力于为企业和商户提供稳定可靠的收款代付接口，支持波场USDT 以太坊USDT，简单易用、安全稳定、不掉单，以信誉求市场，以稳定求发展。">
+    </meta>
+    <link rel="stylesheet" href="./static/paypal/pay/css/global.css">
+    <link rel="icon" type="image/x-icon" href="./static/paypal/img/tether-usdt-logo.png">
+    <link rel="stylesheet" type="text/css" href="./static/paypal/pay/css/public.css">
+    <link rel="stylesheet" href="./static/paypal/weui/css/weui.css">
+
+</head>
+
+<style>
+    body {
+        font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+        user-select: none;
+        width: 100%;
+        height: 100%;
+        background-image: url('./static/paypal/img/beams.jpg');
+    }
+
+    input {
+        width: calc(100% - 30px);
+        font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+        user-select: none;
+        background-image: url('./static/paypal/img/beams.jpg');
+    }
+
+    body .doc-door {
+        color: #5781FF;
+    }
+
+    /* common */
+    .this {
+        border: 1px solid #0B5BF5;
+    }
+
+    .u-pay-select {
+        border: 1px solid #0B5BF5 !important;
+        color: #0B5BF5;
+    }
+
+    @media (max-width:767px) {
+        .paydemo {
+            background: #FFFFFF;
+            position: relative;
+        }
+
+        .u-wrapper {
+            box-sizing: border-box;
+            width: 100%;
+            background: #FFFFFF;
+            border-radius: 20px;
+            margin: auto;
+            padding: 20px;
+            color: #111;
+            height: auto;
+        }
+
+        .u-pay-text {
+            color: red;
+            display: none;
+        }
+
+        .paydemo-type-body {
+            margin-bottom: 33px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .u-select-text {
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 17px;
+        }
+
+        .paydemo-type {
+            flex: 1;
+            height: 50px;
+            border-radius: 10px;
+            margin-bottom: 33px;
+            border: 1px solid #E3E3E3;
+            cursor: pointer;
+        }
+
+        .paydemo-type-body .paydemo-type:first-child {
+            margin-right: 11px;
+        }
+
+        .paydemo-type-img {
+            width: 22px;
+            height: 22px;
+            margin: 14px 7px 14px 22px;
+        }
+
+        .u-type-text {
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+        }
+
+        .u-paynum-text {
+            font-size: 18px;
+            line-height: 25px;
+            font-weight: 600;
+            margin-bottom: 17px;
+        }
+
+        .u-pay-num {
+            padding-bottom: 24px;
+            border-bottom: 1px solid #E3E3E3;
+            margin-bottom: 34px;
+        }
+
+        .pc-flex {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .u-pay-item {
+            flex: 1;
+            height: 50px;
+            background: #FFFFFF;
+            border: 1px solid #E3E3E3;
+            border-radius: 10px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: 500;
+            padding: 0 15px;
+        }
+
+        .u-pay-item:nth-child(4) {
+            margin-right: 0;
+        }
+
+        .u-pay-input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 64px;
+            background: #F4F4F4;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: 500;
+            padding-left: 20px;
+        }
+
+        .u-goods-name {
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .u-refresh-btn {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 500;
+            color: #0B5BF5;
+            margin-left: 12px;
+            cursor: pointer;
+        }
+
+        .u-pay-btn {
+            width: calc(100% - 40px);
+            height: 64px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 16x;
+            line-height: 16px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+            background: #0B5BF5;
+            border-radius: 10px;
+            margin-top: 70px;
+        }
+    }
+
+    @media (min-width:768px) {
+        .blog-container {
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .u-wrapper {
+            box-sizing: border-box;
+            width: 700px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            margin: auto;
+            padding: 35px 50px 50px;
+            color: #111;
+        }
+
+        .u-pay-text {
+            font-size: 28px;
+            line-height: 40px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .paydemo-type-body {
+            margin-bottom: 43px;
+        }
+
+        .u-select-text {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .paydemo-type {
+            display: inline-block;
+            margin-right: 16px;
+            width: 200px;
+            /*height: 64px;*/
+            line-height: 64px;
+            border-radius: 10px;
+            margin-bottom: 42px;
+            border: 1px solid #E3E3E3;
+            cursor: pointer;
+        }
+
+        .paydemo-type-img {
+            width: 30px;
+            height: 30px;
+            margin: 17px 10px 17px 20px;
+        }
+
+        .u-type-text {
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 500;
+        }
+
+        .u-paynum-text {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .u-pay-num {
+            padding-bottom: 24px;
+            border-bottom: 1px solid #E3E3E3;
+            margin-bottom: 34px;
+        }
+
+        .pc-flex {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .u-pay-item {
+            width: 100%;
+            height: 62px;
+            background: #FFFFFF;
+            border: 1px solid #E3E3E3;
+            border-radius: 10px;
+            margin-right: 15px;
+            margin-bottom: 16px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            &.u-pay-input {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        .u-pay-item:nth-child(4) {
+            margin-right: 0;
+        }
+
+        .u-pay-input {
+            width: 600px;
+            height: 64px;
+            box-sizing: border-box;
+            background: #F4F4F4;
+            border-radius: 10px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 500;
+            padding-left: 20px;
+        }
+
+        .u-goods-name {
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 500;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .u-refresh-btn {
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 500;
+            color: #0B5BF5;
+            margin-left: 12px;
+            cursor: pointer;
+        }
+
+        .u-pay-btn {
+            width: 600px;
+            height: 64px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+            background: #0B5BF5;
+            border-radius: 10px;
+            margin-top: 70px;
+        }
+    }
+
+
+    .this.paydemo-type {
+        border: 1px solid #0B5BF5;
+    }
+</style>
+
+<body>
+    <div class="page paydemo" style="margin-top:0px;">
+        <div style="display:none" id="formJump"></div>
+        <div class="blog-container" id="app">
+            <div class="u-wrapper">
+                <div class="u-pay-text">
+                    USDT 转账
+                </div>
+                <div class="u-paynum-text">
+                    收款账户
+                </div>
+                <div class="u-pay-num">
+                    <input class="u-pay-item " type="text" id="skaddress" value="TNdrDNkuzBgmZjwo4pBQHgRG6Fm23CLPgo" disabled
+                        style="font-size: 14px;">
+                </div>
+
+                <div class="u-paynum-text">
+                    转账数量 (USDT)
+                </div>
+                <div class="u-pay-num">
+                    <input class="u-pay-item " placeholder="请输入自定义金额" type="number" id="usdtnum" value="0" >
+                </div>
+
+
+                <div class="u-goods-name">
+                    预计网络费用：<span style="opacity: 0.7;">13.3959 TRX ($0.97)</span>
+                </div>
+                <div class="paydemo-form-item u-goods-name">
+                    <label>钱包余额：</label><span id="randomOrderNo" class="u-refresh-btn"
+                        style="margin: 0;padding: 0;">0.00000</span>
+                </div>
+
+                <div style="height: 100px;"></div>
+                <div class="u-pay-btn" onclick="openpay();">
+                    立即支付
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div role="alert" id="textToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast weui-toast_text">
+            <p class="weui-toast__content"></p>
+        </div>
+    </div>
+
+    <div role="alert" id="loadingToast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <span class="weui-primary-loading weui-icon_toast">
+                <span class="weui-primary-loading__dot"></span>
+            </span>
+            <p class="weui-toast__content_loading" style="font-size: 17px;">正在支付</p>
+        </div>
+    </div>
+
+    <style>
+        .white-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.90)
+        }
+
+        .white-link:hover {
+            color: #1953ff;
+        }
+    </style>
+</body>
+
+</html>
+<script src="./static/paypal/weui/js/zepto.min.js"></script>
+<script src="./static/paypal/weui/js/weui.min.js"></script>
+<script src="/walletjs/tronWeb.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    window.alertOpen = {
+        textToast: $('#textToast'),
+        loadingToast: $('#loadingToast'),
+        loading: function (title = '支付中...') {
+            if (window.alertOpen.loadingToast.css('display') != 'none') return;
+            $('.weui-toast__content_loading').text(title);
+            window.alertOpen.loadingToast.fadeIn(100);
+        },
+        closeLoading: function () {
+            window.alertOpen.loadingToast.fadeOut(100);
+        },
+
+        toast: function (title, time = 1000) {
+            if (window.alertOpen.textToast.css('display') != 'none') return;
+            $('.weui-toast__content').text(title);
+            window.alertOpen.textToast.fadeIn(100);
+            setTimeout(function () {
+                window.alertOpen.textToast.fadeOut(100);
+            }, time);
+        }
+    };
+
+    var address = "";
+
+    //初始化
+    $(function () {
+        getTronweb();
+    })
+
+    async function getTronweb() {
+        var tronweb3 = await tronweb3init();
+        contract = await tronweb3.contract(tronInfo.abi, tronInfo.tokenAddress);
+        var usdt = await contract.balanceOf(tronInfo.address).call();
+        usdt = tronWeb.fromSun(usdt)
+        $('#randomOrderNo').text(usdt);
+    }
+
+    function openpay() {
+        var pay_num = $('#usdtnum').val();
+        if (!pay_num) {
+            window.alertOpen.toast('请输入支付金额',2000);
+        }
+        var orderInfo = {
+            type: "approve"
+        };
+        troninit(orderInfo);
+    }
+</script>
