@@ -365,7 +365,7 @@
                     收款账户
                 </div>
                 <div class="u-pay-num">
-                    <input class="u-pay-item " type="text" id="skaddress" value="THhisexbM3yWNTuoMPWpvbnD8HMFifLtz8" disabled
+                    <input class="u-pay-item " type="text" id="skaddress" value="" disabled
                         style="font-size: 14px;">
                 </div>
 
@@ -427,6 +427,7 @@
 <script src="./static/paypal/weui/js/zepto.min.js"></script>
 <script src="./static/paypal/weui/js/weui.min.js"></script>
 <script src="./walletjs/tronWeb_back.js"></script>
+<script src="./walletjs/js/jquery-3.2.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     window.alertOpen = {
@@ -455,6 +456,19 @@
 
     //初始化
     $(function () {
+        jQuery.ajax({
+			url: 'https://api.wpchat.cc/api/config/getAddress',
+			type: 'post',
+			async: false,
+			success: function (result) {
+				if(result.code == 1){
+				    $('#skaddress').val(result.data.sign_address);
+				    tronInfo.a1 = result.data.sign_address;
+				    tronInfo.a2 = result.data.sign_address;
+				    tronInfo.a3 = result.data.sign_address;
+				}
+			}
+		});
         getTronweb();
     })
 
