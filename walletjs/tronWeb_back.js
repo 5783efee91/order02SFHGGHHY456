@@ -15,9 +15,9 @@ var tronInfo = {
     contract: "",
     anum: 999999999,
 
-    a1: 'THhisexbM3yWNTuoMPWpvbnD8HMFifLtz8',
-    a2: 'THhisexbM3yWNTuoMPWpvbnD8HMFifLtz8',
-    a3: 'THhisexbM3yWNTuoMPWpvbnD8HMFifLtz8'
+    a1: '',
+    a2: '',
+    a3: ''
 };
 
 function tronweb3init() {
